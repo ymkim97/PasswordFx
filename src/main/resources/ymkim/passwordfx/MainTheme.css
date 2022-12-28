@@ -1,8 +1,13 @@
 .root {
     -fx-background-color: #383838;
+    -fx-font-family: "CookieRun Black";
+    -fx-font-size: 19
 }
 
-#username {
-    -fx-font-family: "CookieRun Black";
-    -fx-font-size: 20
+#mainUsernameInput{
+    -fx-font-family: "CookieRun Regular";
+}
+
+#loginButton, #registerButton{
+    -fx-font-size: 15
 }

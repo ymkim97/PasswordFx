@@ -11,10 +11,12 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Main extends Application {
+
     @Override
     public void start(Stage primaryStage) throws IOException {
         try {
-            Font.loadFont(Class.forName("ymkim.passwordfx.Main").getResourceAsStream("font/CookieRun Black.ttf"),20);
+            Font.loadFont(Class.forName("ymkim.passwordfx.Main").getResourceAsStream("font/CookieRun Black.ttf"),10);
+            Font.loadFont(Class.forName("ymkim.passwordfx.Main").getResourceAsStream("font/CookieRun Regular.ttf"),10);
 
             Parent root = FXMLLoader.load(Class.forName("ymkim.passwordfx.Main").getResource("Main.fxml"));
             Scene scene = new Scene(root);
@@ -25,7 +27,9 @@ public class Main extends Application {
             primaryStage.getIcons().add(new Image(Class.forName("ymkim.passwordfx.Main")
                     .getResourceAsStream("images/icon.png")));
             primaryStage.setScene(scene);
+            primaryStage.setResizable(false);
             primaryStage.show();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
