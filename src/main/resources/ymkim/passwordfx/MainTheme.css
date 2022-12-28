@@ -1,0 +1,8 @@
+.root {
+    -fx-background-color: #383838;
+}
+
+#username {
+    -fx-font-family: "CookieRun Black";
+    -fx-font-size: 20
+}
