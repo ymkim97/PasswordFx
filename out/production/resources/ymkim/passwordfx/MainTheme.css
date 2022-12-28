@@ -9,6 +9,5 @@
 }
 
 #loginButton, #registerButton{
-    -fx-font-family: "CookieRun Regular";
     -fx-font-size: 15
 }

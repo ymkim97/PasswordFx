@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="604.0" stylesheets="@MainTheme.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="604.0" stylesheets="@MainTheme.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ymkim.passwordfx.MainController">
    <children>
       <Text fx:id="mainPassword" layoutX="53.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password  :" />
       <Text fx:id="mainUsername" layoutX="52.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username :" />
@@ -18,7 +18,7 @@
          <Image url="@images/mainimage.png" />
       </ImageView>
       <PasswordField fx:id="mainPasswordInput" layoutX="173.0" layoutY="227.0" prefHeight="35.0" prefWidth="255.0" />
-      <Button fx:id="loginButton" layoutX="477.0" layoutY="182.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="73.0" text="Login" />
+      <Button fx:id="loginButton" layoutX="477.0" layoutY="182.0" mnemonicParsing="false" onAction="#login" prefHeight="68.0" prefWidth="73.0" text="Login" />
       <Button fx:id="registerButton" layoutX="254.0" layoutY="312.0" mnemonicParsing="false" text="Register" />
    </children>
 </AnchorPane>

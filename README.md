@@ -32,9 +32,13 @@
 
 <a href="https://www.java.com/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/java-original-wordmark.svg" alt="Java" height="50" /></a>
 
+라이브러리: JavaFX
+
 ---
 
 <div id="4"></div>
 
 ## 💡 주요 기능
 
+1. 메인 창 -> Register: 프로그램 사용자를 추가하는 기능. 사용자는 Username과 Password로 이루어져 있다.
+2. 
