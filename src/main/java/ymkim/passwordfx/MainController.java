@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.image.Image;
@@ -19,16 +20,17 @@ public class MainController {
     @FXML
     private Button loginButton;
 
-    public void login(ActionEvent event) throws Exception {
+    public void setLoginButton(ActionEvent event) throws Exception {
+        Stage primaryStage = new Stage();
 
         if (checkPassword()) {
 
             closeStage();
 
-            Stage primaryStage = new Stage();
             try {
-                Parent root = FXMLLoader.load(Class.forName("ymkim.passwordfx.MainController").getResource("LoggedIn.fxml"));
-                Scene scene = new Scene(root);
+                Parent login = FXMLLoader.load(Class.forName("ymkim.passwordfx.MainController")
+                        .getResource("LoggedIn.fxml"));
+                Scene scene = new Scene(login);
                 scene.getStylesheets().add(Class.forName("ymkim.passwordfx.MainController").getResource("LoggedInTheme.css")
                         .toExternalForm());
 
@@ -44,19 +46,28 @@ public class MainController {
             return;
         }
 
-        //로그인 에러창
-
+        showLoginError();
     }
 
     public boolean checkPassword() {
         return mainPasswordInput.getText().equals("aaa");
     }
 
-    public void closeStage(){
+    public void closeStage() {
         Stage stage = (Stage)loginButton.getScene().getWindow();
         Platform.runLater(() -> {
             stage.close();
         });
+    }
+
+    public void showLoginError() {
+
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Login Failed!");
+        alert.setHeaderText("Invalid Username or Password");
+        alert.setContentText("Please try again");
+        alert.showAndWait();
+
     }
 
 }
