@@ -12,6 +12,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+import java.util.Objects;
+
 public class MainController {
 
     @FXML
@@ -28,15 +30,16 @@ public class MainController {
             closeStage();
 
             try {
-                Parent login = FXMLLoader.load(Class.forName("ymkim.passwordfx.MainController")
-                        .getResource("LoggedIn.fxml"));
+                Parent login = FXMLLoader.load(Objects.requireNonNull(Class.forName("ymkim.passwordfx.MainController")
+                        .getResource("LoggedIn.fxml")));
                 Scene scene = new Scene(login);
-                scene.getStylesheets().add(Class.forName("ymkim.passwordfx.MainController").getResource("LoggedInTheme.css")
-                        .toExternalForm());
+                scene.getStylesheets().add(Objects.requireNonNull(Class.forName("ymkim.passwordfx.MainController")
+                                .getResource("LoggedInTheme.css"))
+                                .toExternalForm());
 
                 primaryStage.setTitle("PasswordFx");
-                primaryStage.getIcons().add(new Image(Class.forName("ymkim.passwordfx.MainController")
-                        .getResourceAsStream("images/icon.png")));
+                primaryStage.getIcons().add(new Image(Objects.requireNonNull(Class.forName("ymkim.passwordfx.MainController")
+                        .getResourceAsStream("images/icon.png"))));
                 primaryStage.setScene(scene);
                 primaryStage.setResizable(false);
                 primaryStage.show();
@@ -55,9 +58,7 @@ public class MainController {
 
     public void closeStage() {
         Stage stage = (Stage)loginButton.getScene().getWindow();
-        Platform.runLater(() -> {
-            stage.close();
-        });
+        Platform.runLater(stage::close);
     }
 
     public void showLoginError() {
