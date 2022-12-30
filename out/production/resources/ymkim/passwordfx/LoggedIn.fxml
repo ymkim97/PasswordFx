@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="604.0" stylesheets="@LoggedInTheme.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" />
+<AnchorPane fx:id="loggedPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="604.0" stylesheets="@LoggedInTheme.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ymkim.passwordfx.LoggedController">
+   <children>
+      <ListView editable="true" layoutX="38.0" layoutY="108.0" prefHeight="200.0" prefWidth="200.0" />
+      <ListView layoutX="366.0" layoutY="108.0" prefHeight="200.0" prefWidth="200.0" />
+      <Button layoutX="281.0" layoutY="136.0" mnemonicParsing="false" text="ADD" />
+      <Button layoutX="269.0" layoutY="193.0" mnemonicParsing="false" text="REMOVE" />
+      <Button layoutX="270.0" layoutY="252.0" mnemonicParsing="false" text="MODIFY" />
+      <ImageView fitHeight="99.0" fitWidth="120.0" layoutX="253.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/mainimage.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="logoutButton" layoutX="269.0" layoutY="342.0" mnemonicParsing="false" onAction="#setLogoutButton" text="LOGOUT" />
+   </children>
+</AnchorPane>
