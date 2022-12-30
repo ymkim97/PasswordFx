@@ -1,10 +1,15 @@
 package ymkim.passwordfx;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+
+import java.util.Objects;
 
 public class LoggedController {
 
@@ -23,6 +28,19 @@ public class LoggedController {
             stage.close();
         }
 
+    }
+
+    public void setAddButton() throws Exception {
+        try {
+            Parent add = FXMLLoader.load(Objects.requireNonNull(Class.forName("ymkim.passwordfx.LoggedController")
+                    .getResource("AddPopup.fxml")));
+            Stage stage = new Stage();
+            stage.setTitle("Add");
+            stage.setScene(new Scene(add));
+            stage.show();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 }
