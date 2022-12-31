@@ -10,7 +10,7 @@ public class AddController {
     AnchorPane addPane;
 
     public void setOkButton() {
-
+        //get textfield information
         Stage stage = (Stage)addPane.getScene().getWindow();
         stage.close();
     }

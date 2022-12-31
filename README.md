@@ -32,7 +32,7 @@
 
 <a href="https://www.java.com/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/java-original-wordmark.svg" alt="Java" height="50" /></a>
 
-라이브러리: JavaFX
+라이브러리: JavaFX <br/> Tool: SceneBuilder
 
 ---
 
@@ -41,7 +41,7 @@
 ## 💡 주요 기능
 
 1. 메인 창 -> Register: 프로그램 사용자를 추가하는 기능. 사용자는 Username과 Password로 이루어져 있다.
-2. .
+2. Add: 각 웹사이트의 name, url, id, password를 입력하고 추가하는 창을 생성한다.
 
 ---
 
@@ -50,3 +50,4 @@
 * 22.12.28 - 프로젝트 시작, 메인 GUI 제작
 * 22.12.29 - 로그인 success / fail GUI 제작
 * 22.12.30 - 로그인 이후 메인 GUI, Add 팝업 제작
+* 22.12.31 - Add 팝업 상세 GUI 제작
