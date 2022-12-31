@@ -24,7 +24,7 @@ public class LoggedController {
         alert.setContentText("Do you want to logout?");
 
         if (alert.showAndWait().get() == ButtonType.OK) {
-            Stage stage = (Stage) loggedPane.getScene().getWindow();
+            Stage stage = (Stage)loggedPane.getScene().getWindow();
             stage.close();
         }
 
