@@ -16,6 +16,12 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         try {
+            System.setProperty("prism.lcdtext", "false");
+
+            Font.loadFont(Class.forName("ymkim.passwordfx.Main")
+                    .getResourceAsStream("font/NotoSansKR-Bold.otf"),10);
+            Font.loadFont(Class.forName("ymkim.passwordfx.Main")
+                    .getResourceAsStream("font/NotoSansKR-Regular.otf"),10);
             Font.loadFont(Class.forName("ymkim.passwordfx.Main")
                     .getResourceAsStream("font/CookieRun Black.ttf"),10);
             Font.loadFont(Class.forName("ymkim.passwordfx.Main")
