@@ -51,3 +51,4 @@
 * 22.12.29 - 로그인 success / fail GUI 제작
 * 22.12.30 - 로그인 이후 메인 GUI, Add 팝업 제작
 * 22.12.31 - Add 팝업 상세 GUI 제작
+* 23.01.02 - Registration GUI 제작

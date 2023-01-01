@@ -1,0 +1,18 @@
+.root {
+    -fx-background-color: #383838;
+    -fx-font-family: "CookieRun Regular";
+    -fx-font-size: 13;
+}
+
+#registerTitle {
+    -fx-font-family: "Noto Sans KR Bold";
+    -fx-font-size: 16;
+}
+
+#signupButton, #cancelButton {
+    -fx-font-family: "CookieRun Black";
+}
+
+#usernameInput, #nameInput, #passwordInput {
+    -fx-font-family: "Noto Sans KR";
+}

@@ -71,4 +71,17 @@ public class MainController {
 
     }
 
+    public void setRegisterButton() throws Exception{
+        try {
+            Parent add = FXMLLoader.load(Objects.requireNonNull(Class.forName("ymkim.passwordfx.LoggedController")
+                    .getResource("Register.fxml")));
+            Stage stage = new Stage();
+            stage.setTitle("Register");
+            stage.setScene(new Scene(add));
+            stage.show();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
 }
