@@ -30,7 +30,7 @@ public class LoggedController {
 
     }
 
-    public void setAddButton() throws Exception {
+    public void setAddButton() {
         try {
             Parent add = FXMLLoader.load(Objects.requireNonNull(Class.forName("ymkim.passwordfx.LoggedController")
                     .getResource("AddPopup.fxml")));

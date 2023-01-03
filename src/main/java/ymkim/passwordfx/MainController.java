@@ -1,7 +1,5 @@
 package ymkim.passwordfx;
 
-import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -22,7 +20,7 @@ public class MainController {
     @FXML
     private Button loginButton;
 
-    public void setLoginButton(ActionEvent event) throws Exception {
+    public void setLoginButton() {
         Stage primaryStage = new Stage();
 
         if (checkPassword()) {
@@ -58,7 +56,7 @@ public class MainController {
 
     public void closeStage() {
         Stage stage = (Stage)loginButton.getScene().getWindow();
-        Platform.runLater(stage::close);
+        stage.close();
     }
 
     public void showLoginError() {
@@ -71,7 +69,7 @@ public class MainController {
 
     }
 
-    public void setRegisterButton() throws Exception{
+    public void setRegisterButton() {
         try {
             Parent add = FXMLLoader.load(Objects.requireNonNull(Class.forName("ymkim.passwordfx.LoggedController")
                     .getResource("Register.fxml")));

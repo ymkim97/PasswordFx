@@ -19,13 +19,13 @@ public class RegisterController {
     AnchorPane registerPane;
 
     @FXML
-    TextField nameInput;
+    TextField MainNameInput;
 
     @FXML
-    TextField usernameInput;
+    TextField MainUsernameInput;
 
     @FXML
-    TextField passwordInput;
+    TextField MainPasswordInput;
 
     public void setCancelButton() {
         Stage stage = (Stage)registerPane.getScene().getWindow();
@@ -55,14 +55,13 @@ public class RegisterController {
             alert.setHeaderText("Signup not completed");
             alert.setContentText("Please check id for duplicate");
             alert.showAndWait();
-
         }
 
     }
 
     public boolean isFieldEmpty() {
-        boolean checkField = nameInput.getText().isEmpty() || usernameInput.getText().isEmpty() ||
-                passwordInput.getText().isEmpty();
+        boolean checkField = MainNameInput.getText().isEmpty() || MainUsernameInput.getText().isEmpty() ||
+                MainPasswordInput.getText().isEmpty();
 
         if (checkField) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -79,7 +78,7 @@ public class RegisterController {
         try {
             Connection con = h2Connector.getConnection();
             Statement stmt = con.createStatement();
-            String state = "SELECT * FROM MAINUSER WHERE MAINUSERNAME = '" + usernameInput.getText() + "'";
+            String state = "SELECT * FROM MAINUSER WHERE MAINUSERNAME = '" + MainUsernameInput.getText() + "'";
             ResultSet resultSet = stmt.executeQuery(state);
             isDuplicate = resultSet.next();
             disableCheckId();
@@ -96,8 +95,8 @@ public class RegisterController {
         try {
             Connection con = h2Connector.getConnection();
             Statement stmt = con.createStatement();
-            String state = "INSERT INTO MAINUSER VALUES('" + usernameInput.getText() + "','" + nameInput.getText()
-                            + "','" + passwordInput.getText() + "')";
+            String state = "INSERT INTO MAINUSER VALUES('" + MainUsernameInput.getText() + "','" + MainNameInput.getText()
+                            + "','" + MainPasswordInput.getText() + "')";
             stmt.executeUpdate(state);
 
             con.close();
@@ -108,7 +107,7 @@ public class RegisterController {
     }
 
     public void disableCheckId() {
-        usernameInput.setDisable(!isDuplicate);
+        MainUsernameInput.setDisable(!isDuplicate);
         if (!isDuplicate) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Signup");

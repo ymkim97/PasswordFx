@@ -5,12 +5,10 @@ import java.sql.DriverManager;
 
 public class H2Connector {
 
-    public Connection getConnection() throws Exception{
-
+    public Connection getConnection() {
         try {
             Class.forName("org.h2.Driver");
-            Connection con = DriverManager.getConnection("jdbc:h2:./src/main/resources/ymkim/passwordfx/data", "sa", "");
-            return con;
+            return DriverManager.getConnection("jdbc:h2:./src/main/resources/ymkim/passwordfx/data", "sa", "");
         } catch (Exception e) {
             e.printStackTrace();
         }
