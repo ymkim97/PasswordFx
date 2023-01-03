@@ -11,21 +11,20 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class RegisterController {
-
-    H2Connector h2Connector = new H2Connector();
-    boolean isDuplicate = true;
+    private final H2Connector h2Connector = new H2Connector();
+    private boolean isDuplicate = true;
 
     @FXML
     AnchorPane registerPane;
 
     @FXML
-    TextField MainNameInput;
+    TextField RegisterMainNameInput;
 
     @FXML
-    TextField MainUsernameInput;
+    TextField RegisterMainUsernameInput;
 
     @FXML
-    TextField MainPasswordInput;
+    TextField RegisterMainPasswordInput;
 
     public void setCancelButton() {
         Stage stage = (Stage)registerPane.getScene().getWindow();
@@ -60,8 +59,8 @@ public class RegisterController {
     }
 
     public boolean isFieldEmpty() {
-        boolean checkField = MainNameInput.getText().isEmpty() || MainUsernameInput.getText().isEmpty() ||
-                MainPasswordInput.getText().isEmpty();
+        boolean checkField = RegisterMainNameInput.getText().isEmpty() || RegisterMainUsernameInput.getText().isEmpty()
+                || RegisterMainPasswordInput.getText().isEmpty();
 
         if (checkField) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -78,7 +77,7 @@ public class RegisterController {
         try {
             Connection con = h2Connector.getConnection();
             Statement stmt = con.createStatement();
-            String state = "SELECT * FROM MAINUSER WHERE MAINUSERNAME = '" + MainUsernameInput.getText() + "'";
+            String state = "SELECT * FROM MAINUSER WHERE MAINUSERNAME = '" + RegisterMainUsernameInput.getText() + "'";
             ResultSet resultSet = stmt.executeQuery(state);
             isDuplicate = resultSet.next();
             disableCheckId();
@@ -95,8 +94,8 @@ public class RegisterController {
         try {
             Connection con = h2Connector.getConnection();
             Statement stmt = con.createStatement();
-            String state = "INSERT INTO MAINUSER VALUES('" + MainUsernameInput.getText() + "','" + MainNameInput.getText()
-                            + "','" + MainPasswordInput.getText() + "')";
+            String state = "INSERT INTO MAINUSER VALUES('" + RegisterMainUsernameInput.getText() + "','" +
+                            RegisterMainNameInput.getText() + "','" + RegisterMainPasswordInput.getText() + "')";
             stmt.executeUpdate(state);
 
             con.close();
@@ -107,7 +106,7 @@ public class RegisterController {
     }
 
     public void disableCheckId() {
-        MainUsernameInput.setDisable(!isDuplicate);
+        RegisterMainUsernameInput.setDisable(!isDuplicate);
         if (!isDuplicate) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Signup");

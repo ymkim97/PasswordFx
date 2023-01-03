@@ -7,12 +7,21 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.Objects;
 
 public class MainController {
+    private final H2Connector h2Connector = new H2Connector();
+    private MainUserRepository mainUserRepository = new MainUserRepository();
+
+    @FXML
+    private TextField mainUsernameInput;
 
     @FXML
     private PasswordField mainPasswordInput;
@@ -36,8 +45,8 @@ public class MainController {
                                 .toExternalForm());
 
                 primaryStage.setTitle("PasswordFx");
-                primaryStage.getIcons().add(new Image(Objects.requireNonNull(Class.forName("ymkim.passwordfx.MainController")
-                        .getResourceAsStream("images/icon.png"))));
+                primaryStage.getIcons().add(new Image(Objects.requireNonNull(Class.forName(
+                        "ymkim.passwordfx.MainController").getResourceAsStream("images/icon.png"))));
                 primaryStage.setScene(scene);
                 primaryStage.setResizable(false);
                 primaryStage.show();
@@ -51,7 +60,26 @@ public class MainController {
     }
 
     public boolean checkPassword() {
-        return mainPasswordInput.getText().equals("aaa");
+        mainUserRepository.setMainUsername(mainUsernameInput.getText());
+        Connection con = h2Connector.getConnection();
+
+        try {
+            Statement stmt = con.createStatement();
+            String state = "SELECT MAINUSERNAME FROM MAINUSER WHERE (MAINPASSWORD = '" +
+                            mainPasswordInput.getText() + "')";
+            ResultSet resultSet = stmt.executeQuery(state);
+
+            if (resultSet.next() && resultSet.getString(1).equals(mainUsernameInput.getText())) {
+                stmt.close();
+                con.close();
+                resultSet.close();
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return false;
     }
 
     public void closeStage() {
