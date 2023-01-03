@@ -10,6 +10,7 @@
 2. [**PasswordFX 목표**](#2)
 3. [**기술 스택**](#3)
 4. [**주요 기능**](#4)
+5. [**개발 LOG**](#5)
 ---
 <div id="1"></div>
 
@@ -40,10 +41,13 @@
 
 ## 💡 주요 기능
 
-1. 메인 창 -> Register: 프로그램 사용자를 추가하는 기능. 사용자는 Username과 Password로 이루어져 있다.
-2. Add: 각 웹사이트의 name, url, id, password를 입력하고 추가하는 창을 생성한다.
+1. 메인 창 -> Register: 프로그램 사용자를 추가하는 기능. 사용자는 Name, Username과 Password로 이루어져 있다. Sign up을 하기 위해서는
+프로그램에 등록되지 않은 username을 설정하고 모든 필드가 채워져야 한다. <br/><br/>
+2. 로그인 이후 창 -> Add: 각 웹사이트의 name, url, id, password를 입력하고 추가하는 창을 생성한다.
 
 ---
+
+<div id="5"></div>
 
 ## 📃 개발 LOG
 
@@ -52,3 +56,4 @@
 * 22.12.30 - 로그인 이후 메인 GUI, Add 팝업 제작
 * 22.12.31 - Add 팝업 상세 GUI 제작
 * 23.01.02 - Registration GUI 제작, H2 데이터베이스 구축 및 연동
+* 23.01.03 - 데이터베이스를 이용한 Main user sign up 기능 제작
