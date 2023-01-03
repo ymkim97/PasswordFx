@@ -9,6 +9,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 import java.sql.Connection;
@@ -28,6 +30,13 @@ public class MainController {
 
     @FXML
     private Button loginButton;
+
+    @FXML
+    public void enterPressed(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            setLoginButton();
+        }
+    }
 
     public void setLoginButton() {
         Stage primaryStage = new Stage();
@@ -109,5 +118,7 @@ public class MainController {
             e.printStackTrace();
         }
     }
+
+
 
 }

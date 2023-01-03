@@ -17,7 +17,7 @@
       <ImageView fx:id="mainImageView" fitHeight="119.0" fitWidth="168.0" layoutX="241.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@images/mainimage.png" />
       </ImageView>
-      <PasswordField fx:id="mainPasswordInput" layoutX="173.0" layoutY="227.0" prefHeight="35.0" prefWidth="255.0" />
+      <PasswordField fx:id="mainPasswordInput" layoutX="173.0" layoutY="227.0" onKeyPressed="#enterPressed" prefHeight="35.0" prefWidth="255.0" />
       <Button fx:id="loginButton" layoutX="477.0" layoutY="182.0" mnemonicParsing="false" onAction="#setLoginButton" prefHeight="68.0" prefWidth="73.0" text="Login" />
       <Button fx:id="registerButton" layoutX="254.0" layoutY="312.0" mnemonicParsing="false" onAction="#setRegisterButton" text="Register" />
    </children>

@@ -56,4 +56,4 @@ Library: JavaFX <br/> Database: H2 <br/> Tool: SceneBuilder
 * 22.12.30 - 로그인 이후 메인 GUI, Add 팝업 제작
 * 22.12.31 - Add 팝업 상세 GUI 제작
 * 23.01.02 - Registration GUI 제작, H2 데이터베이스 구축 및 연동
-* 23.01.03 - 데이터베이스를 이용한 Main user sign up 기능 제작
+* 23.01.03 - 데이터베이스를 이용한 Main user sign up 기능 제작, login 기능 제작
