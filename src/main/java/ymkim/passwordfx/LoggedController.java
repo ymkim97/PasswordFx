@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 import java.util.Objects;
 
 public class LoggedController {
-
+    private final static MainUserRepository mainUserRepository = MainController.getMainUserRepository();
     @FXML
     private AnchorPane loggedPane;
 

@@ -20,7 +20,7 @@ import java.util.Objects;
 
 public class MainController {
     private final H2Connector h2Connector = new H2Connector();
-    private MainUserRepository mainUserRepository = new MainUserRepository();
+    private static final MainUserRepository mainUserRepository = new MainUserRepository();
 
     @FXML
     private TextField mainUsernameInput;
@@ -31,7 +31,6 @@ public class MainController {
     @FXML
     private Button loginButton;
 
-    @FXML
     public void enterPressed(KeyEvent event) {
         if (event.getCode() == KeyCode.ENTER) {
             setLoginButton();
@@ -119,6 +118,8 @@ public class MainController {
         }
     }
 
-
+    public static MainUserRepository getMainUserRepository() {
+        return mainUserRepository;
+    }
 
 }
