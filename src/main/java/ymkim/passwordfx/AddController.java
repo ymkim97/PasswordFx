@@ -48,6 +48,11 @@ public class AddController {
                 e.printStackTrace();
             }
 
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Add Information");
+            alert.setHeaderText("Add information Successful");
+            alert.showAndWait();
+
             Stage stage = (Stage)addPane.getScene().getWindow();
             stage.close();
             return;
