@@ -6,3 +6,7 @@
     -fx-font-family: "CookieRun Black";
     -fx-font-size: 13;
 }
+
+#selectList, #viewList {
+    -fx-font-family: "Noto Sans KR Bold"
+}
