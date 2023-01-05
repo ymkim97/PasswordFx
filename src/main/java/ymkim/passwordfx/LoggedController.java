@@ -74,7 +74,11 @@ public class LoggedController implements Initializable {
             stage.setTitle("Add");
             stage.setScene(new Scene(add));
             stage.showAndWait();
-            selectList.getItems().add(getLatestInput());
+
+            if (!mainUserRepository.getLatestInfo().equals("")) {
+                selectList.getItems().add(getLatestInput());
+                mainUserRepository.setLatestInfo("");
+            }
         } catch (Exception e){
             e.printStackTrace();
         }

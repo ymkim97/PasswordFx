@@ -41,6 +41,7 @@ public class AddController {
                                 + nameInputField.getText() + "', '" + urlInputField.getText() + "', '"
                                 + idInputField.getText() + "', '" + passwordInputField.getText() + "')";
                 stmt.executeUpdate(state);
+                mainUserRepository.setLatestInfo(nameInputField.getText());
 
                 con.close();
                 stmt.close();
