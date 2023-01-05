@@ -1,5 +1,7 @@
 package ymkim.passwordfx;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -8,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -15,10 +18,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class LoggedController implements Initializable {
     private final static MainUserRepository mainUserRepository = MainController.getMainUserRepository();
@@ -28,6 +28,9 @@ public class LoggedController implements Initializable {
 
     @FXML
     private ListView<String> selectList;
+
+    @FXML
+    private TextArea outputArea;
 
     @FXML
     private AnchorPane loggedPane;
@@ -50,6 +53,16 @@ public class LoggedController implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         selectList.getItems().addAll(website);
+        selectList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                String currentInfo = selectList.getSelectionModel().getSelectedItem();
+                List<String> information = getEachInformation(currentInfo);
+                outputArea.clear();
+                outputArea.setText("Name: " + information.get(0) + "\nURL: " + information.get(1) + "\nID: " +
+                                    information.get(2) + "\nPassword: " + information.get(3));
+            }
+        });
     }
 
     public void setLogoutButton() {
@@ -97,6 +110,26 @@ public class LoggedController implements Initializable {
             e.printStackTrace();
         }
         return latest;
+    }
+
+    public List<String> getEachInformation(String currentInfoName) {
+        List<String> information = new ArrayList<>();
+        try {
+            Connection con = h2Connector.getConnection();
+            Statement stmt = con.createStatement();
+            String state = "SELECT NAME, URL, USERID, USERPASSWORD FROM INFORMATION WHERE NAME = '" +
+                            currentInfoName + "'";
+            ResultSet resultSet = stmt.executeQuery(state);
+            resultSet.next();
+            for (int i = 1; i <= 4; i++) {
+                information.add(resultSet.getString(i));
+            }
+            return information;
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+
+        return information;
     }
 
 }

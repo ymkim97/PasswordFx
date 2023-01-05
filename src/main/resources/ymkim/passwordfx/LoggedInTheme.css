@@ -10,3 +10,8 @@
 #selectList, #viewList {
     -fx-font-family: "Noto Sans KR Bold"
 }
+
+#outputArea {
+    -fx-font-family: "Noto Sans KR Bold";
+    -fx-font-size: 15
+}
