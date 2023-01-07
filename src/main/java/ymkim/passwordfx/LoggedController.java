@@ -149,16 +149,27 @@ public class LoggedController implements Initializable {
     }
 
     public void setRemoveButton() {
-        try {
-            Connection con = h2Connector.getConnection();
-            Statement stmt = con.createStatement();
-            String state = "DELETE FROM INFORMATION WHERE INFONUMBER = '" + currentInfoNumber + "'";
-            stmt.executeUpdate(state);
-            website.remove(currentInfoName);
-            selectList.getItems().remove(currentInfoName);
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (checkRemove()) {
+            try {
+                Connection con = h2Connector.getConnection();
+                Statement stmt = con.createStatement();
+                String state = "DELETE FROM INFORMATION WHERE INFONUMBER = '" + currentInfoNumber + "'";
+                stmt.executeUpdate(state);
+                website.remove(currentInfoName);
+                selectList.getItems().remove(currentInfoName);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
+
     }
 
+    public boolean checkRemove() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Remove");
+        alert.setHeaderText("Remove information");
+        alert.setContentText("Do you want to remove " + currentInfoName + "?");
+
+        return alert.showAndWait().get() == ButtonType.OK;
+    }
 }

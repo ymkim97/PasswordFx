@@ -43,7 +43,10 @@ Library: JavaFX <br/> Database: H2 <br/> Tool: SceneBuilder
 
 1. 메인 창 -> Register: 프로그램 사용자를 추가하는 기능. 사용자는 Name, Username과 Password로 이루어져 있다. Sign up을 하기 위해서는
 프로그램에 등록되지 않은 username을 설정하고 모든 필드가 채워져야 한다. <br/><br/>
-2. 로그인 이후 창 -> Add: 각 웹사이트의 name, url, id, password를 입력하고 추가하는 창을 생성한다.
+2. 로그인 이후 창 -> Add: 각 웹사이트의 name, url, id, password를 입력하고 추가하는 창을 생성한다. 모든 필드는 필수다.<br/><br/>
+3. 로그인 이후 창 -> Remove: 사용자가 추가했던 해당 웹사이트의 정보를 삭제한다. <br/><br/>
+4. 로그인 이후 창 -> Modify: 사용자가 추가했던 해당 웹사이트의 정보를 수정한다. <br/><br/>
+5. 로그인 이후 창 -> Logout: 프로그램을 종료한다.
 
 ---
 
@@ -60,4 +63,4 @@ Library: JavaFX <br/> Database: H2 <br/> Tool: SceneBuilder
 * 23.01.04 - 데이터베이스를 이용한 Add information 기능 제작
 * 23.01.05 - LoggedIn 정보 선택창 기능 제작 -> 사용자가 정보 입력 후 바로 반영되도록 제작. 입력된 정보 클릭 후 그에 대한 내용 출력 기능
 제작
-* 23.01.06 - 
+* 23.01.07 - 정보 삭제(Remove) 기능 제작.
