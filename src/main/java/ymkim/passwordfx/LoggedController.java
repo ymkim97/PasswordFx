@@ -62,8 +62,10 @@ public class LoggedController implements Initializable {
                 getCurrentInfoNumber();
                 List<String> information = getEachInformation();
                 outputArea.clear();
-                outputArea.setText("Name: " + information.get(0) + "\n\nURL: " + information.get(1) + "\n\nID: " +
-                                    information.get(2) + "\n\nPassword: " + information.get(3));
+                if (!website.isEmpty()) {
+                    outputArea.setText("Name: " + information.get(0) + "\n\nURL: " + information.get(1) + "\n\nID: " +
+                            information.get(2) + "\n\nPassword: " + information.get(3));
+                }
             }
         });
     }
@@ -123,9 +125,10 @@ public class LoggedController implements Initializable {
             String state = "SELECT NAME, URL, USERID, USERPASSWORD FROM INFORMATION WHERE NAME = '" +
                             currentInfoName + "'";
             ResultSet resultSet = stmt.executeQuery(state);
-            resultSet.next();
-            for (int i = 1; i <= 4; i++) {
-                information.add(resultSet.getString(i));
+            if (resultSet.next()) {
+                for (int i = 1; i <= 4; i++) {
+                    information.add(resultSet.getString(i));
+                }
             }
             return information;
         } catch(Exception e) {
@@ -141,8 +144,9 @@ public class LoggedController implements Initializable {
             Statement stmt = con.createStatement();
             String state = "SELECT INFONUMBER FROM INFORMATION WHERE NAME = '" + currentInfoName + "'";
             ResultSet resultSet = stmt.executeQuery(state);
-            resultSet.next();
-            currentInfoNumber = resultSet.getInt(1);
+            if (resultSet.next()) {
+                currentInfoNumber = resultSet.getInt(1);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

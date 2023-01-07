@@ -7666,3 +7666,13 @@ Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection wa
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:678)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
 	... 66 more
+2023-01-07 18:00:07 jdbc[19]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: No data is available [2000-214]
+2023-01-07 18:00:07 jdbc[20]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: No data is available [2000-214]
+2023-01-07 18:00:47 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: No data is available [2000-214]
+2023-01-07 18:00:47 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: No data is available [2000-214]
+2023-01-07 18:02:06 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: No data is available [2000-214]
