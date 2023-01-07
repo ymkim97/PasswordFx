@@ -25,6 +25,8 @@ public class LoggedController implements Initializable {
     private final String mainUser = mainUserRepository.getMainUsername();
     private final H2Connector h2Connector = new H2Connector();
     private final List<String> website;
+    private int currentInfoNumber;
+    private String currentInfoName;
 
     @FXML
     private ListView<String> selectList;
@@ -56,11 +58,12 @@ public class LoggedController implements Initializable {
         selectList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                String currentInfo = selectList.getSelectionModel().getSelectedItem();
-                List<String> information = getEachInformation(currentInfo);
+                currentInfoName = selectList.getSelectionModel().getSelectedItem();
+                getCurrentInfoNumber();
+                List<String> information = getEachInformation();
                 outputArea.clear();
-                outputArea.setText("Name: " + information.get(0) + "\nURL: " + information.get(1) + "\nID: " +
-                                    information.get(2) + "\nPassword: " + information.get(3));
+                outputArea.setText("Name: " + information.get(0) + "\n\nURL: " + information.get(1) + "\n\nID: " +
+                                    information.get(2) + "\n\nPassword: " + information.get(3));
             }
         });
     }
@@ -112,7 +115,7 @@ public class LoggedController implements Initializable {
         return latest;
     }
 
-    public List<String> getEachInformation(String currentInfoName) {
+    public List<String> getEachInformation() {
         List<String> information = new ArrayList<>();
         try {
             Connection con = h2Connector.getConnection();
@@ -130,6 +133,32 @@ public class LoggedController implements Initializable {
         }
 
         return information;
+    }
+
+    public void getCurrentInfoNumber() {
+        try {
+            Connection con = h2Connector.getConnection();
+            Statement stmt = con.createStatement();
+            String state = "SELECT INFONUMBER FROM INFORMATION WHERE NAME = '" + currentInfoName + "'";
+            ResultSet resultSet = stmt.executeQuery(state);
+            resultSet.next();
+            currentInfoNumber = resultSet.getInt(1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void setRemoveButton() {
+        try {
+            Connection con = h2Connector.getConnection();
+            Statement stmt = con.createStatement();
+            String state = "DELETE FROM INFORMATION WHERE INFONUMBER = '" + currentInfoNumber + "'";
+            stmt.executeUpdate(state);
+            website.remove(currentInfoName);
+            selectList.getItems().remove(currentInfoName);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }
