@@ -94,7 +94,9 @@ public class LoggedController implements Initializable {
             stage.showAndWait();
 
             if (!mainUserRepository.getLatestInfo().equals("")) {
-                selectList.getItems().add(getLatestInput());
+                String latestInputName = getLatestInput();
+                website.add(latestInputName);
+                selectList.getItems().add(latestInputName);
                 mainUserRepository.setLatestInfo("");
             }
         } catch (Exception e){
@@ -169,11 +171,30 @@ public class LoggedController implements Initializable {
     }
 
     public boolean checkRemove() {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Remove");
-        alert.setHeaderText("Remove information");
-        alert.setContentText("Do you want to remove " + currentInfoName + "?");
 
-        return alert.showAndWait().get() == ButtonType.OK;
+        if (!website.isEmpty() && currentInfoName != null) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Remove");
+            alert.setHeaderText("Remove information");
+            alert.setContentText("Do you want to remove " + currentInfoName + "?");
+
+            return alert.showAndWait().get() == ButtonType.OK;
+        }
+        return false;
+    }
+
+    public void setModifyButton() {
+        try {
+            Parent add = FXMLLoader.load(Objects.requireNonNull(Class.forName("ymkim.passwordfx.LoggedController")
+                    .getResource("Modify.fxml")));
+            Stage stage = new Stage();
+            stage.setTitle("Modify");
+            stage.setScene(new Scene(add));
+            stage.showAndWait();
+
+
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }

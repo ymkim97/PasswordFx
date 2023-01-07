@@ -1,0 +1,17 @@
+.root {
+    -fx-background-color: #383838;
+    -fx-font-family: "CookieRun Regular";
+}
+
+#okButton, #cancelButton {
+    -fx-font-family: "CookieRun Black";
+}
+
+#modifyNameField, #modifyUrlField, #modifyIdInputField ,#modifyPasswordInputField{
+    -fx-font-family: "Noto Sans KR";
+}
+
+#modifyTitle {
+    -fx-font-family: "Noto Sans KR Bold";
+    -fx-font-size: 16;
+}
