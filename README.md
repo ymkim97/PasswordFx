@@ -63,4 +63,5 @@ Library: JavaFX <br/> Database: H2 <br/> Tool: SceneBuilder
 * 23.01.04 - 데이터베이스를 이용한 Add information 기능 제작
 * 23.01.05 - LoggedIn 정보 선택창 기능 제작 -> 사용자가 정보 입력 후 바로 반영되도록 제작. 입력된 정보 클릭 후 그에 대한 내용 출력 기능
 제작
-* 23.01.07 - 정보 삭제(Remove) 기능 제작.
+* 23.01.07 - 정보 삭제(Remove) 기능 제작, Modify 팝업 GUI 제작
+* 23.01.08 - Modify 기능 제작, 모든 기능 제작 완료

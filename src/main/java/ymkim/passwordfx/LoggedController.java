@@ -148,6 +148,7 @@ public class LoggedController implements Initializable {
             ResultSet resultSet = stmt.executeQuery(state);
             if (resultSet.next()) {
                 currentInfoNumber = resultSet.getInt(1);
+                mainUserRepository.setModifyInfoNumber(currentInfoNumber);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -184,13 +185,24 @@ public class LoggedController implements Initializable {
     }
 
     public void setModifyButton() {
+
         try {
-            Parent add = FXMLLoader.load(Objects.requireNonNull(Class.forName("ymkim.passwordfx.LoggedController")
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Objects.requireNonNull(Class.forName("ymkim.passwordfx.ModifyController")
                     .getResource("Modify.fxml")));
+            Parent root = loader.load();
+            ModifyController modifyController = loader.getController();
+            modifyController.setInputField();
+
             Stage stage = new Stage();
             stage.setTitle("Modify");
-            stage.setScene(new Scene(add));
+            stage.setScene(new Scene(root));
             stage.showAndWait();
+
+            website.remove(currentInfoName);
+            selectList.getItems().remove(currentInfoName);
+            website.add(mainUserRepository.getModifiedName());
+            selectList.getItems().add(mainUserRepository.getModifiedName());
 
 
         } catch (Exception e){
