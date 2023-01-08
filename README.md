@@ -11,12 +11,14 @@
 3. [**기술 스택**](#3)
 4. [**주요 기능**](#4)
 5. [**개발 LOG**](#5)
+6. [**버전**](#6)
 ---
 <div id="1"></div>
 
 ## 📋 PasswordFX 소개
 
 아이디와 비밀번호 관리 프로그램.
+지금은 간단한 UI와 암호화 없이 데이터 저장을 하며 앞으로 암호화를 통한 데이터 저장과 더 새로운 UI를 업데이트 할 예정.
 
 ---
 <div id="2"></div>
@@ -33,7 +35,8 @@
 
 <a href="https://www.java.com/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/java-original-wordmark.svg" alt="Java" height="50" /></a>
 
-Library: JavaFX <br/> Database: H2 <br/> Tool: SceneBuilder
+Library: JavaFX 19 [ sdk 다운로드 = <https://openjfx.io> ] <br/> Database: H2 <br/> Tool: SceneBuilder <br/>
+Launch4j를 이용하여 .exe파일로 배포 시도 중
 
 ---
 
@@ -65,3 +68,11 @@ Library: JavaFX <br/> Database: H2 <br/> Tool: SceneBuilder
 제작
 * 23.01.07 - 정보 삭제(Remove) 기능 제작, Modify 팝업 GUI 제작
 * 23.01.08 - Modify 기능 제작, 모든 기능 제작 완료
+* 23.01.08 - **Version 1.0**
+
+---
+<div id="1"></div>
+
+## 💾 버전
+
+## V.1.0
