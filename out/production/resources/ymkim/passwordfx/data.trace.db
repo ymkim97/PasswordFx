@@ -10219,3 +10219,5 @@ org.h2.jdbc.JdbcSQLNonTransientException: No data is available [2000-214]
 org.h2.jdbc.JdbcSQLNonTransientException: No data is available [2000-214]
 2023-01-10 15:46:13 jdbc[4]: exception
 org.h2.jdbc.JdbcSQLNonTransientException: No data is available [2000-214]
+2023-01-10 16:09:59 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: No data is available [2000-214]

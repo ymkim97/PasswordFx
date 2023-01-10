@@ -81,7 +81,12 @@ public class AddController {
         Statement stmt = con.createStatement();
         String state = "SELECT * FROM INFORMATION";
         ResultSet resultSet = stmt.executeQuery(state);
+        if (!resultSet.next()) {
+            return 0;
+        }
+
         resultSet.last();
+
 
         return resultSet.getInt(1);
     }
