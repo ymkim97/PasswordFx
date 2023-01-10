@@ -77,4 +77,4 @@ Launch4j를 이용하여 .exe파일로 배포 시도 중
 
 ## V.1.0
 
-[![V.1.0](http://img.youtube.com/vi/YTEmFf62b7w/0.jpg)](https://youtu.be/YTEmFf62b7w?t=0s)
+[![V.1.0](http://img.youtube.com/vi/Oh_f3jr0kGo/0.jpg)](https://youtu.be/Oh_f3jr0kGo?t=0s)
