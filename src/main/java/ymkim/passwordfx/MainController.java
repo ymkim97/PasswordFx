@@ -77,12 +77,15 @@ public class MainController {
                             mainPasswordInput.getText() + "')";
             ResultSet resultSet = stmt.executeQuery(state);
 
-            if (resultSet.next() && resultSet.getString(1).equals(mainUsernameInput.getText())) {
-                stmt.close();
-                con.close();
-                resultSet.close();
-                return true;
+            while (resultSet.next()) {
+                if (resultSet.getString(1).equals(mainUsernameInput.getText())) {
+                    stmt.close();
+                    con.close();
+                    resultSet.close();
+                    return true;
+                }
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
