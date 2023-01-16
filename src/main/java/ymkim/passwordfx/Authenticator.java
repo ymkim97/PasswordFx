@@ -15,11 +15,10 @@ public class Authenticator {
         String key = "73869011290132490853472803203527";
         String iv = key.substring(0, 16);
 
-        Cipher cipher = Cipher.getInstance(alg);
-        SecretKeySpec keySpec = new SecretKeySpec(key.getBytes(), "AES");
-        IvParameterSpec ivParameterSpec = new IvParameterSpec(iv.getBytes());
+        cipher = Cipher.getInstance(alg);
+        keySpec = new SecretKeySpec(key.getBytes(), "AES");
+        ivParameterSpec = new IvParameterSpec(iv.getBytes());
     }
-
 
     public String encrypt(String text) throws Exception {
         cipher.init(Cipher.ENCRYPT_MODE, keySpec, ivParameterSpec);

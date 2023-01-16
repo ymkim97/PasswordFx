@@ -33,13 +33,16 @@ public class AddController {
     public void setOkButton() {
         if (!checkEmptyField()) {
             try {
+                Authenticator authenticator = new Authenticator();
                 int lastInfoNumber = getLastInfoNumber();
 
                 Connection con = h2Connector.getConnection();
                 Statement stmt = con.createStatement();
                 String state = "INSERT INTO INFORMATION VALUES(" + (lastInfoNumber + 1) + ", '" + mainUser + "', '"
-                                + nameInputField.getText() + "', '" + urlInputField.getText() + "', '"
-                                + idInputField.getText() + "', '" + passwordInputField.getText() + "')";
+                                + authenticator.encrypt(nameInputField.getText()) + "', '"
+                                + authenticator.encrypt(urlInputField.getText()) + "', '"
+                                + authenticator.encrypt(idInputField.getText()) + "', '"
+                                + authenticator.encrypt(passwordInputField.getText()) + "')";
                 stmt.executeUpdate(state);
                 mainUserRepository.setLatestInfo(nameInputField.getText());
 
@@ -86,7 +89,6 @@ public class AddController {
         }
 
         resultSet.last();
-
 
         return resultSet.getInt(1);
     }
