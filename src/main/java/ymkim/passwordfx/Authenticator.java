@@ -6,9 +6,9 @@ import javax.crypto.spec.SecretKeySpec;
 import java.util.Base64;
 
 public class Authenticator {
-    private Cipher cipher;
-    private SecretKeySpec keySpec;
-    private IvParameterSpec ivParameterSpec;
+    private final Cipher cipher;
+    private final SecretKeySpec keySpec;
+    private final IvParameterSpec ivParameterSpec;
 
     public Authenticator() throws Exception{
         String alg = "AES/CBC/PKCS5Padding";

@@ -27,6 +27,7 @@ public class LoggedController implements Initializable {
     private final List<String> website;
     private int currentInfoNumber;
     private String currentInfoName;
+    private Authenticator authenticator;
 
     @FXML
     private ListView<String> selectList;
@@ -40,12 +41,13 @@ public class LoggedController implements Initializable {
     public LoggedController() {
         website = new ArrayList<>();
         try {
+            authenticator = new Authenticator();
             Connection con = h2Connector.getConnection();
             Statement stmt = con.createStatement();
             String state = "SELECT NAME FROM INFORMATION WHERE MAIN_USER = '" + mainUser + "'";
             ResultSet resultSet = stmt.executeQuery(state);
             while(resultSet.next()) {
-                website.add(resultSet.getString(1));
+                website.add(authenticator.decrypt(resultSet.getString(1)));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -112,7 +114,7 @@ public class LoggedController implements Initializable {
             String state = "SELECT NAME FROM INFORMATION WHERE MAIN_USER = '" + mainUser + "'";
             ResultSet resultSet = stmt.executeQuery(state);
             resultSet.last();
-            latest = resultSet.getString(1);
+            latest = authenticator.decrypt(resultSet.getString(1));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -125,11 +127,11 @@ public class LoggedController implements Initializable {
             Connection con = h2Connector.getConnection();
             Statement stmt = con.createStatement();
             String state = "SELECT NAME, URL, USERID, USERPASSWORD FROM INFORMATION WHERE NAME = '" +
-                            currentInfoName + "'";
+                            authenticator.encrypt(currentInfoName) + "'";
             ResultSet resultSet = stmt.executeQuery(state);
             if (resultSet.next()) {
                 for (int i = 1; i <= 4; i++) {
-                    information.add(resultSet.getString(i));
+                    information.add(authenticator.decrypt(resultSet.getString(i)));
                 }
             }
             return information;
@@ -144,7 +146,8 @@ public class LoggedController implements Initializable {
         try {
             Connection con = h2Connector.getConnection();
             Statement stmt = con.createStatement();
-            String state = "SELECT INFONUMBER FROM INFORMATION WHERE NAME = '" + currentInfoName + "'";
+            String state = "SELECT INFONUMBER FROM INFORMATION WHERE NAME = '"
+                            + authenticator.encrypt(currentInfoName )+ "'";
             ResultSet resultSet = stmt.executeQuery(state);
             if (resultSet.next()) {
                 currentInfoNumber = resultSet.getInt(1);
